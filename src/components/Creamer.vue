@@ -1,10 +1,13 @@
 <template>
   <div class="froth">
-    <div v-for=" in 5" class="foam"></div>
+    <div v-for=" in 5" class="foam" :style="{ backgroundColor: color }"></div>
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { defineProps } from "vue";
+defineProps<{ color: string }>();
+</script>
 <style lang="scss" scoped>
 .froth {
   overflow: visible;
