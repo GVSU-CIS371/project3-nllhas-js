@@ -1,18 +1,65 @@
 <template>
   <div>
-    <Beverage :isIced="currentTemp === 'Cold'" />
+    <Beverage 
+    :isIced="currentTemp === 'Cold'"
+    :base="currentBase" 
+    :creamer="currentCreamer" 
+    :syrup="currentSyrup" 
+    />
     <ul>
       <li>
         <template v-for="temp in temps" :key="temp">
           <label>
-            <input
-              type="radio"
-              name="temperature"
-              :id="`r${temp}`"
-              :value="temp"
-              v-model="currentTemp"
+            <input 
+            type="radio" 
+            name="temperature" 
+            :id="`r${temp}`" 
+            :value="temp" 
+            v-model="currentTemp"
             />
             {{ temp }}
+          </label>
+        </template>
+      </li>
+
+      <li>
+        <template v-for="(base, i) in bases" :key="base.id">
+          <label>
+            <input 
+            type="radio" 
+            name="base" 
+            :id="`b${i}`" 
+            :value="base" 
+            v-model="currentBase" />
+            {{ base.name }}
+          </label>
+        </template>
+      </li>
+
+      <li>
+        <template v-for="(creamer, i) in creamers" :key="creamer.id">
+          <label>
+            <input 
+            type="radio" 
+            name="creamer" 
+            :id="`c${i}`" 
+            :value="creamer" 
+            v-model="currentCreamer" />
+            {{ creamer.name }}
+          </label>
+        </template>
+      </li>
+
+      <li>
+        <template v-for="(syrup, i) in syrups" :key="syrup.id">
+          <label>
+            <input 
+            type="radio" 
+            name="syrup" 
+            :id="`s${i}`" 
+            :value="syrup"
+             v-model="currentSyrup" />
+            {{ syrup.name }}
           </label>
         </template>
       </li>
@@ -22,7 +69,7 @@
 
 <script setup lang="ts">
 import Beverage from "./components/Beverage.vue";
-import { temps, currentTemp } from "./stores/beverage";
+import { temps, currentTemp, bases, creamers, syrups, currentBase, currentCreamer, currentSyrup } from "./stores/beverage";
 </script>
 
 <style lang="scss">
