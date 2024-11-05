@@ -23,7 +23,6 @@
       </li>
 
       <li>
-        <label> Base: </label>
         <template v-for="(base, i) in bases" :key="base.id">
           <label>
             <input 
